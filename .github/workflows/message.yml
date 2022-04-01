@@ -1,0 +1,19 @@
+---
+name: GitHub Script Message
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  github-script-message:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+    - name: message
+      uses: actions/github-script@v6
+      id: set-result
+      with:
+        script: return "main ブランチにマージされた の Actions"
+        result-encoding: string
