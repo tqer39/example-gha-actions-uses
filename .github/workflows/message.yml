@@ -7,7 +7,14 @@ on:
       - main
 
 jobs:
+  composite_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/test
+
   github-script-message:
+    needs: [composite_test]
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
