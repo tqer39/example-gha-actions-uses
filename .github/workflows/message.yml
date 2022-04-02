@@ -7,26 +7,26 @@ on:
       - main
 
 jobs:
-  composite_test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/test
+  # composite_test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/actions/test
 
-  github-script-message:
-    needs: [composite_test]
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-    - name: message
-      uses: actions/github-script@v6
-      id: set-result
-      with:
-        script: return "main ブランチにマージされた の Actions"
-        result-encoding: string
+  # github-script-message:
+  #   needs: [composite_test]
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 3
+  #   steps:
+  #   - name: message
+  #     uses: actions/github-script@v6
+  #     id: set-result
+  #     with:
+  #       script: return "main ブランチにマージされた の Actions"
+  #       result-encoding: string
 
   hello_world_job:
-    needs: [composite_test]
+    # needs: [composite_test]
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
@@ -42,8 +42,4 @@ jobs:
 
       - name: echo Random Number
         run: echo random-number ${{ steps.foo.outputs.random-number }}
-        shell: bash
-
-      - name: Goodbye Shell
-        run: goodbye.sh
         shell: bash
