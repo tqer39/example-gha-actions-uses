@@ -43,3 +43,7 @@ jobs:
       - name: echo Random Number
         run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
+
+      - name: Goodbye Shell
+        run: goodbye.sh
+        shell: bash
