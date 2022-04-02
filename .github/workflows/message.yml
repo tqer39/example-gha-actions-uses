@@ -30,9 +30,14 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/random-number
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v3
+
+      - name: Random Number
+        id: random-number
+        uses: ./.github/actions/random-number
         with:
           who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash

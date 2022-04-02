@@ -16,14 +16,19 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - name: Hello
+      id: hello
+      run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
 
-    - id: random-number-generator
+    - name: Random Number Generator
+      id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
 
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+    - name: Set GitHub Action Path
+      id: set-gha-path
+      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
 
     # - run: goodbye.sh
