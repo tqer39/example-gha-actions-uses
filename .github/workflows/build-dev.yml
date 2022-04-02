@@ -7,5 +7,5 @@ on:
       - main
 
 jobs:
-  build-win:
+  build:
     uses: ./.github/workflows/build.yml
